@@ -1,0 +1,4 @@
+#Thu Jan 28 14:41:28 CST 2016
+eclipse.preferences.version=1
+validator.Checked=WebRoot/WEB-INF/view/test/register.jsp,WebRoot/static/echarts/build,WebRoot/WEB-INF/view/register/basicinfor.jsp,WebRoot/WEB-INF/view/register/regist.jsp,WebRoot/static/js/jquery-1.10.1.min.js
+validator.Unchecked=

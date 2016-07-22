@@ -1,0 +1,209 @@
+/*
+
+*/
+
+/* city寮� */
+.city-selector {
+    position: absolute;
+    z-index: 10;
+}
+
+.city-text {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #cecbce;
+    height: 23px;
+    line-height: 23px;
+    overflow: hidden;
+    padding: 0 20px 0 4px;
+    position: relative;
+    top: 5px;
+    float: left;
+}
+
+.city_text_click {
+    border-bottom: 0 none;
+    height: 25px;
+    z-index: 20;
+}
+
+.pulldown {
+    background-position: -264px -188px;
+    display: block;
+    height: 24px;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 17px;
+}
+.city-selector .close, .pulldown{
+    background-image: url("../images/newicon20140910.png");
+    background-repeat: no-repeat;
+}
+.city-selector .city-content {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #cecbce;
+    box-shadow: 0 0 5px #ddd;
+    display: none;
+    padding: 15px;
+    width: 390px;
+}
+.city-selector.click .close, .city-selector.click .city-content {
+    display: block;
+}
+.City-list {
+    position: relative;
+}
+.m, .sm {
+    margin-bottom: 10px;
+}
+.m, .mt, .mc, .mb, .sm, .smt, .smc, .smb {
+    overflow: hidden;
+}
+.mt, .smt {
+    cursor: default;
+}
+
+.City-list .tab {
+    border-bottom: 2px solid #f40;
+    float: left;
+    height: 25px;
+    overflow: visible;
+    width: 100%;
+}
+
+.tab li, .tab a, .tab-item {
+    float: left;
+    text-align: center;
+}
+.city-selector .tab li {
+    clear: none;
+    float: left;
+}
+.city-selector a {
+    color: #005aa0;
+    text-decoration: none;
+    font: 12px/150% Arial,Verdana,"瀹嬩綋";
+}
+
+.city-selector .tab a {
+   font: 700 14px/23px 'microsoft yahei';
+}
+
+.city-selector .mc a:hover {
+    background-color: #005aa0;
+    color: #fff;
+}
+
+.tab li {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ddd #ddd;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px 0;
+    color: #ccc;
+    cursor: pointer;
+    float: left;
+    height: 23px;
+    line-height: 23px;
+    margin-right: 3px;
+    padding: 1px 1px 0;
+    position: relative;
+    text-align: center;
+}
+
+.tab a {
+	margin: 0 21px 0 11px;
+	position: relative;  /* 涓轰簡鑳借閲岄潰鐨刬鍏冪礌鍙互鐢ㄥ叾缁濆瀹氫綅 */
+}
+
+.tab li.click {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #fff;
+    border-color: #f40 #f40;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 2px 2px 0;
+    color: #000;
+    height: 25px;
+    padding: 0;
+    text-decoration: none;
+}
+
+em {
+    font-style: normal;
+}
+
+.tab a i {
+    background-position: 0 -35px;
+    display: block;
+    height: 5px;
+    overflow: hidden;
+    position: absolute;
+    right: -14px;
+    top: 10px;
+    width: 7px;
+}
+
+.tab a:hover i {
+    background-position: 0 -28px;
+}
+
+.tab a i {
+    background-image: url("../images/jd-stock.png");
+    background-repeat: no-repeat;
+}
+
+.tab li, .tab a, .tab-item {
+    float: left;
+    text-align: center;
+}
+.area-list {
+    padding-top: 5px;
+}
+
+.city-selector .area-list li {
+    clear: none;
+    padding: 2px 0 2px 15px;
+}
+.area-list li {
+    clear: none;
+    float: left;
+    padding: 2px 0 2px 15px;
+    width: 80px;
+}
+.area-list li a {
+    color: #005aa0;
+    float: left;
+    padding: 2px 4px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    width: 55px;
+}
+.city-selector.click .close {
+    cursor: pointer;
+}
+.city-selector .close {
+    background-position: -257px -86px;
+    display: none;
+    height: 17px;
+    left: 410px;
+    position: absolute;
+    top: -5px;
+    width: 17px;
+    z-index: 2;
+}
+
+.clear {
+	content: " ";
+	display: block;
+	height: 0px;
+	clear: both;
+}

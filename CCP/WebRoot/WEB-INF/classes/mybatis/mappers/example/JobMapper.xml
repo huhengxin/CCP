@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qdlg.zy.ccp.dao.JobDAO">
+
+	<!-- =========================================================== -->
+    <!-- 定义resultMap                                                                                                                                                                             -->
+    <!-- =========================================================== 
+	<resultMap id="userMap" type="qdlg.zy.ccp.bean.User">
+		<result property="" column=""/>
+		<result property="" column=""/>
+	</resultMap>
+	-->
+	<!-- =========================================================== -->
+    <!-- 一些公共变量设置                                                                                                                        			 -->
+    <!-- =========================================================== -->
+	<sql id="selectAllColumns">
+		<![CDATA[
+		select
+			id, firmName, industry, position, startTime, endTime, userId
+		from
+			job
+		]]>
+	</sql>
+	
+	<!-- =========================================================== -->
+    <!-- DAO方法中的基本增删改查方法                                                                                                                           -->
+    <!-- =========================================================== -->
+    <!-- 插入记录 -->
+    <insert id="add" parameterType="Object" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+		insert into job( firmName, industry, position, startTime, endTime, userId)
+		values( #{firmName},#{industry}, #{position}, #{startTime}, #{endTime}, #{userId})
+	    ]]>	
+	</insert>
+	
+	<!-- 根据id查询 -->
+	<select id="queryById" parameterType="Object" resultType="qdlg.zy.ccp.bean.Job">
+		<include refid="selectAllColumns"/>
+		<![CDATA[
+			where id = #{id}
+		]]>	
+	</select>
+	
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="Object">
+		<![CDATA[
+		update job
+		   set 
+				firmName = #{firmName},
+				industry  = #{industry},
+				position  = #{position},
+				startTime  = #{startTime},
+				endTime  = #{endTime}				
+		 where id = #{id}
+		]]>
+	</update>
+	
+	<!-- 修改记录，只修改只不为空的字段 -->
+	<update id="updateBySelect" parameterType="Object">
+		update job
+		set
+		       1=1
+   			<if test="firmName != null  ">
+				,firmName = #{firmName}
+			</if>
+   			<if test="industry != null  ">
+				,industry  = #{industry}
+			</if>
+   			<if test="position != null  ">
+				,position  = #{position}
+			</if>
+   			<if test="startTime != null  ">
+				,startTime  = #{startTime}
+			</if>
+   			<if test="endTime != null  ">
+				,endTime  = #{endTime}
+			</if>
+		 where id = #{id}
+	</update>
+	
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="Object">
+		<![CDATA[
+		delete from job where id = #{id}
+		]]>
+	</delete>
+	
+	<!-- 查询总数 -->
+	<select id="queryCount" resultType="java.lang.Long">
+		select count(1) from job
+	</select>
+	
+	<!-- 分页查询 
+	<select id="queryList" resultType="qdlg.zy.ccp.bean.Job">
+		<include refid="selectAllColumns"/>
+		
+		<include refid="pagination_tail" />
+	</select>
+	-->
+</mapper>

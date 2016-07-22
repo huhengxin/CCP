@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qdlg.zy.ccp.dao.RegionDAO">
+
+	<!-- =========================================================== -->
+    <!-- 定义resultMap                                                                                                                                                                             -->
+    <!-- =========================================================== 
+	<resultMap id="userMap" type="qdlg.zy.ccp.bean.User">
+		<result property="" column=""/>
+		<result property="" column=""/>
+	</resultMap>
+	-->
+	<!-- =========================================================== -->
+    <!-- 一些公共变量设置                                                                                                                        			 -->
+    <!-- =========================================================== -->
+	<sql id="selectAllColumns">
+		<![CDATA[
+		select
+			id, regionName, level, code, parentCode
+		from
+			region
+		]]>
+	</sql>
+	
+	<!-- =========================================================== -->
+    <!-- DAO方法中的基本增删改查方法                                                                                                                           -->
+    <!-- =========================================================== -->
+    <!-- 插入记录 -->
+    <insert id="add" parameterType="Object" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+		insert into region(id, regionName, level, code, parentCode)
+		values( #{id},#{regionName}, #{level}, #{code}, #{parentCode})
+	    ]]>	
+	</insert>
+	
+	<!-- 根据id查询 -->
+	<select id="queryById" parameterType="Object" resultType="qdlg.zy.ccp.bean.Region">
+		<include refid="selectAllColumns"/>
+		<![CDATA[
+			where id = #{id}
+		]]>	
+	</select>
+	
+	
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="Object">
+		<![CDATA[
+		update region
+		   set 
+				regionName = #{regionName},
+				level  = #{level}
+				code = #{code},
+				parentCode  = #{parentCode}
+		 where id = #{id}
+		]]>
+	</update>
+	
+	<!-- 修改记录，只修改不为空的字段 -->
+	<update id="updateBySelect" parameterType="Object">
+		update region
+		set
+		       1=1
+   			<if test="regionName != null  ">
+				,regionName = #{regionName}
+			</if>
+   			<if test="level != null  ">
+				,level  = #{level}
+			</if>
+   			<if test="code != null  ">
+				,code = #{code}
+			</if>
+   			<if test="parentCode != null  ">
+				,parentCode  = #{parentCode}
+			</if>
+		 where id = #{id}
+	</update>
+	
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="Object">
+		<![CDATA[
+		delete from region where id = #{id}
+		]]>
+	</delete>
+	
+	<!-- 查询总数 -->
+	<select id="queryCount" resultType="java.lang.Long">
+		select count(1) from region
+	</select>
+	
+	<!-- 分页查询 
+	<select id="queryList" resultType="qdlg.zy.ccp.bean.Region">
+		<include refid="selectAllColumns"/>
+		<include refid="pagination_tail" />
+	</select>
+	-->
+	<!-- 根据上级编码 查询下级所有地区 -->
+	<select id="queryByParentCode" parameterType="Object" resultType="qdlg.zy.ccp.bean.Region">
+	<include refid="selectAllColumns"/>
+	<![CDATA[
+		where parentCode=#{parentCode}	
+	]]>
+	</select>
+	<!-- 根据地区编码查询上级省编码 -->
+	<select id="queryCodeByRegion" parameterType="Object" resultType="java.lang.String">
+	<![CDATA[
+	    select parentCode 
+	    from region 
+	    where code =(
+	     select parentCode from region 
+	      where code=#{code}
+	    )
+	]]>
+	</select>
+	
+</mapper>

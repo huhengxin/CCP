@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qdlg.zy.ccp.dao.StatisticDAO">
+	<!-- 查询所有记录 -->
+	<select id="getAll"  resultType="qdlg.zy.ccp.bean.Statistic">
+		<![CDATA[
+		select
+			regionName name, userNum value
+		from
+			statistic
+		]]>
+	</select>
+	<!-- 得到网站注册的总人数 -->
+	<select id="getSum"  resultType="java.lang.Long">
+		<![CDATA[
+		select
+			sum(userNum)
+		from
+			statistic
+		]]>
+	</select>
+	<!-- 根据code，修改记录 -->
+	<update id="updateNum" parameterType="Object">
+		<![CDATA[
+		update statistic
+		   set 
+			userNum=userNum+1
+		 where code = #{code}
+		]]>
+	</update>
+	
+</mapper>

@@ -1,0 +1,401 @@
+/*公共区*/
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html,body {
+	font: 12px/18px STHeiti, "Microsoft YaHei", arial, 宋体;
+	background: #f1f4f5 none repeat scroll 0 0 !important;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
+}
+
+li {
+	list-style: none;
+	vertical-align: top;
+} /*li里浮动,li不浮动，去3像素bug*/
+
+.header {
+	background: rgb(0, 124, 195) none repeat scroll 0 0;
+	height: 35px;
+	line-height: 35px;
+	color: #b9cbe2;
+	width: 96%;
+	min-width: 1000px;
+	padding: 0 2%;
+	font-size: 14px;
+}
+
+.header a {
+	font-weight: bold;
+}
+
+.title {
+	width: 1000px;
+	height: 50px;
+	line-height: 50px;
+	margin: 25px auto;
+	border-bottom: 2px solid #CFD6DE;
+	position: relative;
+	font-size: 18px;
+}
+
+.title .reg_step1_reg {
+	width: 300px;
+	float: left;
+	padding: 0px 10px;
+	text-align: center;
+
+}
+
+.title .reg_step2_basicinfor {
+	width: 330px;
+	float: left;
+	padding: 0px 10px;
+	text-align: center;
+	
+}
+
+.title .reg_step3_regok {
+	width: 250px;
+	float: left;
+	padding: 0px 10px;
+	text-align: center;
+	
+}
+
+.title .reg_indicator {
+	background-color: red;
+	will-change: left;
+	position: absolute;
+	height: 4px;
+	bottom: -2px;
+	border-radius: 1.5px;
+	width: 290px;
+}
+.title .reg_step_label{
+ width:36px;
+ height:36px;
+ border-radius:50%;
+ color: #FFF;
+ background-color:#CFD6DE; 
+ padding: 0px 7px 0px 7px;
+}
+.title span{
+ font: bold;
+ margin-right: 5px;
+}
+
+/*内容区-注册账号区*/
+.content {
+	width: 96%;
+	min-width: 1000px;
+	padding: 0 2%;
+}
+
+.main {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.reg-con{
+	width: 520px;
+	margin: 35px auto 0;
+	border: 1px solid #cfd6de;
+	background-color: #f8f8f8;
+	border-radius: 4px;
+	/*	box-shadow:0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); */
+}
+
+.reg-header ,.infor-header{
+	background-color: #f8f8f8;
+	color: #333;
+	font-size: 24px;
+	text-align: center;
+	width: 100%;
+	height: 70px;
+	line-height: 70px;
+	border-radius: 4px 4px 0 0;
+	border-bottom: 1px solid #cfd6de;
+}
+
+.main .tab {
+	width: 100%;
+	background-color: #fff;
+	border-bottom: 1px solid #cfd6de;
+	position: relative;
+}
+
+.main .tab ul {
+	width: 100%;
+	height: 68px;
+	line-height: 68px;
+}
+
+#reg_mode_nav i{
+	font-size: 24px;
+	margin-right: 10px;
+	color: #ccc;
+	vertical-align: middle;
+}
+#reg_mode_nav span{
+	vertical-align: middle;
+}
+
+.main .tab ul li {
+	float: left;
+	width: 50%;
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+}
+.indicator {
+	background-color: rgb(0, 124, 195);
+	will-change: left, right;
+	position: absolute;
+	height: 3px;
+	bottom: -2px;
+	border-radius: 1.5px;
+}
+.main .reg-form , .main .infor-form{
+	border-radius: 0 0 4px 4px;
+	padding: 35px 45px;
+	position: relative;
+}
+
+.form-item {
+	width: 430px;
+	margin-bottom: 5px;
+}
+
+.form-item label {
+	color: #333;
+	font-size: 14px;
+	height: 34px;
+	line-height: 34px;
+	margin-right: 15px;
+	text-align: right;
+	width: 85px;
+	display: inline-block;
+}
+
+.main .reg-form button {
+	background-color: rgb(111, 189, 91);
+	border-radius: 3px;
+	width: 410px;
+	border: medium none;
+	height: 52px;
+	color: #fff;
+	font-size: 20px;
+	letter-spacing: 6px; /* 设置字符间距 */
+	margin: 15px 10px 0;
+	cursor: pointer;
+}
+
+.main .reg-form button:hover {
+	background-color: rgb(90, 185, 65);
+}
+.clearfix:after {
+	clear: both;
+	content: " ";
+	display: block;
+}
+.input-max {
+	height: 34px;
+	line-height: 34px;
+	width: 230px;
+	border: 1px solid #c0c7cd;
+	border-radius: 2px 0 0 2px;
+	font-size: 14px;
+	padding: 0 10px;
+}
+
+.wid-130 {
+	width: 130px;
+}
+
+.user-ico {
+	background: rgba(255, 255, 255, 1) url("../images/reg_user.png")
+		no-repeat scroll center center;
+	width: 34px;
+	height: 34px;
+	line-height: 34px;
+	display: inline-block;
+	position: absolute;
+	border: 1px solid #c0c7cd;
+	border-radius: 0 2px 2px 0;
+	border-left-width: 0;
+}
+
+.lock-ico {
+	background: rgba(255, 255, 255, 1) url("../images/reg_lock.png")
+		no-repeat scroll center center;
+	width: 34px;
+	height: 34px;
+	line-height: 34px;
+	display: inline-block;
+	position: absolute;
+	border: 1px solid #c0c7cd;
+	border-radius: 0 2px 2px 0;
+	border-left-width: 0;
+}
+
+.text-right {
+	text-align: right;
+}
+.img-captcha {
+    height: 34px;
+    width: 88px;
+    position: absolute;
+    margin-left: 10px;
+    border: 1px solid #C0C7CD;
+}
+.reg-form .reg-no-ico {
+    left: 397px;
+    cursor: pointer;
+}
+.reg-no-ico {
+    background: rgba(255, 255, 255, 0) url("../images/pen.png") no-repeat scroll center center;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    display: inline-block;
+    position: absolute;
+    border-width: 1px 1px 1px 0px;
+    border-style: solid;
+    border-color: #C0C7CD;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    border-radius: 0px 2px 2px 0px;
+}
+.validate-tips{
+  padding: 2px 0px 6px 110px;
+  color: red;
+  font-size: 12px;
+  height: 12px;
+  line-height:12px;
+  margin: 0px;
+  display: block;
+}
+.a-change-captcha {
+	color: red;
+	position: absolute;
+	text-align: right;
+	right: 90px;
+	bottom: 115px;
+}
+
+/*内容区--基本信息区*/
+.basicinfor{
+	width: 540px;
+	margin: 35px auto 0;
+	border: 1px solid #cfd6de;
+	background-color: #f8f8f8;
+	border-radius: 4px;
+}
+.infor-item{
+	width: 440px;
+	margin-bottom: 5px;
+	height: 55px;
+}
+.infor-item .infor-tip {
+	color: #333;
+	font-size: 16px;
+	height: 34px;
+	line-height: 34px;
+	text-align: right;
+	width: 75px;
+	display: inline-block;
+}
+.infor-item .input-tip{
+	color: gray;
+	font-size: 13px;
+	height: 34px;
+	line-height: 34px;
+	text-align: left;
+	width: 45px;
+	margin-right:6px;
+	display: inline-block;
+}
+.infor-item .input-max {
+	height: 34px;
+	line-height: 34px;
+	width: 105px;
+	border: 1px solid #C0C7CD;
+	border-radius: 2px;
+	font-size: 14px;
+	padding: 0px 10px;
+}
+
+.gender-tip {
+	position: absolute;
+	border: 1px #C0C7CD solid;
+	right: 165px;
+	top: 37px;
+	width: 55px;
+	height: 32px;
+	line-height: 32px;
+	margin-left: 10px;
+	border-radius: 2px;
+}
+.gender-checked{
+	background-color: rgb(153,217,234);
+}
+.gender-tip:hover{
+	cursor: pointer;
+}
+.gender-tip label{
+	line-height: 34px;
+	font-size: 14px;
+	color: gray;
+	margin-left: 4px;
+}
+.gender-tip label{
+	cursor: pointer;
+}
+.gender-tip i{
+	font-size: 16px;
+	margin-left: 10px;
+	color: #ccc;
+	vertical-align: middle;
+}
+.constellation-tip {
+	height: 34px;
+	line-height: 34px;
+	width: 100px;
+	border: none;
+	font-size: 14px;
+	color: blue;
+	padding-left: 30px;
+}
+
+.main .infor-form button {
+	background-color: rgb(111, 189, 91);
+	border-radius: 3px;
+	width: 410px;
+	border: medium none;
+	height: 52px;
+	color: #fff;
+	font-size: 20px;
+	letter-spacing: 6px; /* 设置字符间距 */
+	margin: 15px 10px 0;
+	cursor: pointer;
+}
+
+.main .infor-form button:hover {
+	background-color: rgb(90, 185, 65);
+}
+
+.img-ico-right{
+	background-image: url("../images/reg_yes.png");
+}
+.img-ico-wrong{
+	background-image: url("../images/reg_yesandon.png");
+}

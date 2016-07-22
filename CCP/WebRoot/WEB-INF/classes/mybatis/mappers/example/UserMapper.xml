@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qdlg.zy.ccp.dao.UserDAO">
+
+	<!-- =========================================================== -->
+    <!-- 定义resultMap                                                                                                                                                                             -->
+    <!-- =========================================================== 
+	<resultMap id="userMap" type="qdlg.zy.ccp.bean.User">
+		<result property="" column=""/>
+		<result property="" column=""/>
+	</resultMap>
+	-->
+	<!-- =========================================================== -->
+    <!-- 一些公共变量设置                                                                                                                        			 -->
+    <!-- =========================================================== -->
+	<sql id="selectAllColumns">
+		<![CDATA[
+		select
+			id, avatar, realName, gender, birth, hometown, location, feeling, telephone, email,lastLoginTime, lastLoginIP
+		from 
+			user
+		]]>
+	</sql>
+	<sql id="where_fragement">
+		where 1=1
+			<if test="entity.passw != null">
+			and passw = #{entity.passw}
+			</if>
+			<if test="entity.telephone != null and entity.telephone != ''">
+			and telephone = #{entity.telephone}
+			</if>
+			<if test="entity.email != null and entity.email != ''">
+			and email = #{entity.email}
+			</if>
+	</sql>
+	<!-- =========================================================== -->
+    <!-- DAO方法中的基本增删改查方法                                                                                                                           -->
+    <!-- =========================================================== -->
+    <!-- 插入记录 (注册用)-->
+    <insert id="add" parameterType="Object" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+		insert into user( passw, telephone, email, state, createTime)
+		values( #{passw},#{telephone}, #{email}, #{state}, now())
+	    ]]>	
+	</insert>
+	
+	<!-- 根据id查询 -->
+	<select id="queryById" parameterType="Object" resultType="qdlg.zy.ccp.bean.User">
+		<include refid="selectAllColumns"/>
+		<![CDATA[
+			where id = #{id}
+		]]>	
+	</select>
+	<!--查重 （注册用）-->
+	<select id="checkUser" parameterType="Object" resultType="qdlg.zy.ccp.bean.User">
+		<![CDATA[
+			select telephone, email from user where telephone = #{loginName} or email= #{loginName}
+		]]>	
+	</select>
+	<!-- 注册添加基本信息 -->
+	<update id="addBasicInfor" parameterType="Object">
+		<![CDATA[
+		update user
+		   set 
+		        realName=#{realName},
+				gender  = #{gender},
+				birth  = #{birth},
+				hometown  = #{hometown},
+				location  = #{location},
+				updateTime  = now()
+		 where id = #{id}
+		]]>
+	</update>
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="Object">
+		<![CDATA[
+		update user
+		   set 
+				avatar = #{avatar},
+				gender  = #{gender},
+				birth  = #{birth},
+				hometown  = #{hometown},
+				location  = #{location},
+				feeling  = #{feeling},
+				updateTime  = now(),
+				lastLoginTime  = #{lastLoginTime},
+				lastLoginIP = #{lastLoginIP}
+		 where id = #{id}
+		]]>
+	</update>
+	
+	<!-- 修改记录，只修改只不为空的字段 -->
+	<update id="updateBySelect" parameterType="Object">
+		update user
+		set
+		    updateTime = now()
+   			<if test="avatar != null  ">
+				,avatar = #{avatar}
+			</if>
+   			<if test="gender != null  ">
+				,gender  = #{gender}
+			</if>
+   			<if test="birth != null  ">
+				,birth = #{birth}
+			</if>
+   			<if test="hometown != null  ">
+				,hometown = #{hometown}
+			</if>
+   			<if test="location != null  ">
+				,location = #{location}
+			</if>
+   			<if test="feeling != null  ">
+				,feeling = #{feeling}
+			</if>
+   			<if test="lastLoginTime != null  ">
+				,lastLoginTime = #{lastLoginTime}
+			</if>
+   			<if test="lastLoginIP != null  ">
+				,lastLoginIP = #{lastLoginIP}
+			</if>
+		 where id = #{id}
+	</update>
+	
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="Object">
+		<![CDATA[
+		delete from user where id = #{id}
+		]]>
+	</delete>
+	
+	<!-- 查询总数 -->
+	<select id="queryCount" resultType="java.lang.Long">
+		select count(1) from user
+	</select>
+	
+	<!-- 分页查询 
+	<select id="queryList" resultType="qdlg.zy.ccp.bean.User">
+		<include refid="selectAllColumns"/>
+		<include refid="pagination_tail" />
+	</select>
+	-->
+</mapper>
